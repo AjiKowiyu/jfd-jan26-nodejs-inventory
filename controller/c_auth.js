@@ -27,6 +27,7 @@ module.exports =
             let password_cocok = bcrypt.compareSync(form_password, password_db)
             // jika password cocok, maka redirect ke halaman dashboard
             if (password_cocok) {
+                req.session.user = username_exist
                 res.redirect('/dashboard')
             } else {
                 // jika password salah, kita berikan info error + kembalikan ke halaman login
@@ -35,6 +36,16 @@ module.exports =
         } else {
             // jika tidak ada username-nya, kita berikan info error + kembalikan ke halaman login
             res.redirect(`/login?msg=username tidak terdaftar, silakan hubungi administrator sistem.`)
+        }
+    },
+
+
+
+    cek_login: function(req,res,next) {
+        if (req.session.user) {
+            next()
+        } else {
+            res.redirect('/login?msg=sesi anda sudah habis, silakan login!')
         }
     }
 
