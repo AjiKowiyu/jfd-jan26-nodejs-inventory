@@ -10,6 +10,7 @@ const c_beranda     = require('./controller/c_beranda')
 const c_auth        = require('./controller/c_auth')
 const cek_login     = c_auth.cek_login
 const c_dashboard   = require('./controller/c_dashboard')
+const c_master_produk   = require('./controller/c_master_produk')
 
 
 // settingan session untuk login
@@ -39,6 +40,7 @@ app.get('/login', c_auth.form_login)
 app.post('/auth/proses-login', c_auth.proses_login)
 
 app.get('/dashboard', cek_login, c_dashboard.index)
+app.get('/produk', cek_login, c_master_produk.index)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)
