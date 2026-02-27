@@ -5,6 +5,11 @@ module.exports =
 {
 
     form_login: function(req,res) {
+        if (req.session.user) {
+            res.redirect('/dashboard')
+            return
+        }
+
         res.render('auth/form-login', {
             req: req,
         }) //ejs
