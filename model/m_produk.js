@@ -24,5 +24,30 @@ module.exports =
                 }
             })
         })
-    }
+    },
+
+
+
+    insert_1_produk: function(req) {
+        let sql = mysql.format(
+            'INSERT INTO master_produk SET ?',
+            [{
+                // kolom_sql: form_html
+                kode        : req.body.form_kode_barang.toUpperCase(),
+                nama        : req.body.form_nama_barang,
+                deskripsi   : req.body.form_deskripsi,
+            }]
+        )
+
+        return new Promise( function(resolve,reject) {
+            db.query(sql, function(errorSql, hasil) {
+                if (errorSql) {
+                    reject(errorSql)
+                } else {
+                    resolve(hasil)
+                }
+            })
+        })
+    },
+
 }
