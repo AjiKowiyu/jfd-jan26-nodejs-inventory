@@ -7,4 +7,10 @@ module.exports =
             data_produk: await m_produk.get_semua_produk()
         })
     },
+
+
+
+    form_tambah: async function (req,res) {
+        res.render('master-produk/form-tambah', {})
+    }
 }
