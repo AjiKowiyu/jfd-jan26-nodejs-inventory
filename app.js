@@ -3,6 +3,7 @@ const app           = express()
 const port          = 3000
 const passport      = require('passport')
 const session       = require('express-session')
+const fileUpload    = require('express-fileupload')
 
 
 // import file controller
@@ -27,6 +28,7 @@ app.use( session({
 }))
 app.use( passport.initialize() )
 app.use( passport.session() )
+app.use( fileUpload() )
 
 
 app.use( express.urlencoded({extended:false}) )

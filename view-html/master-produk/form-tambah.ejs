@@ -6,7 +6,7 @@
 <h1>Tambah produk baru</h1>
 <hr>
 
-<form action="/produk/insert" method="post">
+<form action="/produk/insert" method="post" enctype="multipart/form-data">
 
     <div class="row">
         <div class="col-md-6">
@@ -24,6 +24,13 @@
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
                 <textarea name="form_deskripsi" class="form-control" rows="5"></textarea>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label">Foto Produk</label><br>
+                <input type="file" name="form_upload_foto">
             </div>
         </div>
     </div>

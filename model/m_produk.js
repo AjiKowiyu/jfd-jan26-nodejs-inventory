@@ -28,7 +28,7 @@ module.exports =
 
 
 
-    insert_1_produk: function(req) {
+    insert_1_produk: function(req, filename) {
         let sql = mysql.format(
             'INSERT INTO master_produk SET ?',
             [{
@@ -36,6 +36,7 @@ module.exports =
                 kode        : req.body.form_kode_barang.toUpperCase(),
                 nama        : req.body.form_nama_barang,
                 deskripsi   : req.body.form_deskripsi,
+                foto        : (filename) ? filename : null,
             }]
         )
 
