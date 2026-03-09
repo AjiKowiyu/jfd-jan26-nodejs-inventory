@@ -28,6 +28,28 @@ module.exports =
     },
 
 
+    get_semua_produk_by_kode: function(req) {
+        let sql = mysql.format(
+            `SELECT
+                s.*, mp.nama AS nama_produk, u.username 
+            FROM stok_produk AS s
+            JOIN master_produk AS mp ON mp.kode = s.kode
+            JOIN user AS u ON u.id = s.created_by
+            WHERE s.kode = 'WFTCOK100' ORDER BY id ASC;`, []
+        )
+
+        return new Promise( function(resolve,reject) {
+            db.query(sql, function(errorSql, hasil) {
+                if (errorSql) {
+                    reject(errorSql)
+                } else {
+                    resolve(hasil)
+                }
+            })
+        })
+    },
+
+
 
     insert_stok_masuk: function(req, stok_terbaru) {
         let sql = mysql.format(
