@@ -56,6 +56,7 @@ app.get('/stok-keluar', cek_login, c_stok_keluar.index)
 app.post('/stok-keluar/insert', cek_login, c_stok_keluar.validasi_stok_keluar, c_stok_keluar.insert)
 
 app.get('/kartu-stok', cek_login, c_kartu_stok.index)
+app.get('/kartu-stok/:kode_produk', cek_login, c_kartu_stok.index)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)

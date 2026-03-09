@@ -28,14 +28,14 @@ module.exports =
     },
 
 
-    get_semua_produk_by_kode: function(req) {
+    get_semua_produk_by_kode: function(kode_produk) {
         let sql = mysql.format(
             `SELECT
                 s.*, mp.nama AS nama_produk, u.username 
             FROM stok_produk AS s
             JOIN master_produk AS mp ON mp.kode = s.kode
             JOIN user AS u ON u.id = s.created_by
-            WHERE s.kode = 'WFTCOK100' ORDER BY id ASC;`, []
+            WHERE s.kode = ? ORDER BY id ASC;`, [kode_produk]
         )
 
         return new Promise( function(resolve,reject) {
