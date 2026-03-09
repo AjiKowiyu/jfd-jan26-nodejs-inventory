@@ -1,3 +1,4 @@
+const {body, query, validationResult} = require('express-validator')
 const m_produk      = require('../model/m_produk')
 const m_stok_produk = require('../model/m_stok_produk')
 
@@ -13,7 +14,27 @@ module.exports =
 
 
 
+    validasi_stok_masuk: [
+        body('form_qty_masuk')
+        .notEmpty().withMessage('Qty tidak boleh kosong')
+        .isInt({gt: 0}).withMessage('Qty harus lebih besar dari 0')
+        .isInt({max: 10000}).withMessage('Qty maksimal 10.000')
+    ],
+
+
+
     insert: async function(req,res) {
+        let validasi = validationResult(req)
+        // jika validasi gagal
+        if (validasi.errors.length > 0) {
+            return res.render('stok-masuk/main', {
+                req: req,
+                produk: await m_produk.get_semua_produk(),
+                pesan_validasi_error: validasi.array(),
+            })
+        }
+
+
         try {
             // ambil data ke m_produk yg kodenya adalah sama dengan di form
             let stok_terakhir = await m_stok_produk.get_produk_by_kode(req)

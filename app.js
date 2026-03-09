@@ -48,7 +48,7 @@ app.get('/produk/create', cek_login, c_master_produk.form_tambah)
 app.post('/produk/insert', cek_login, c_master_produk.validasi_insertProduk, c_master_produk.insert)
 
 app.get('/stok-masuk', cek_login, c_stok_masuk.index)
-app.post('/stok-masuk/insert', cek_login, c_stok_masuk.insert)
+app.post('/stok-masuk/insert', cek_login, c_stok_masuk.validasi_stok_masuk, c_stok_masuk.insert)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)
