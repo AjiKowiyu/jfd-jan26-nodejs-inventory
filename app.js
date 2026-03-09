@@ -13,6 +13,7 @@ const cek_login     = c_auth.cek_login
 const c_dashboard   = require('./controller/c_dashboard')
 const c_master_produk   = require('./controller/c_master_produk')
 const c_stok_masuk      = require('./controller/c_stok_masuk')
+const c_stok_keluar     = require('./controller/c_stok_keluar')
 
 
 // settingan session untuk login
@@ -49,6 +50,9 @@ app.post('/produk/insert', cek_login, c_master_produk.validasi_insertProduk, c_m
 
 app.get('/stok-masuk', cek_login, c_stok_masuk.index)
 app.post('/stok-masuk/insert', cek_login, c_stok_masuk.validasi_stok_masuk, c_stok_masuk.insert)
+
+app.get('/stok-keluar', cek_login, c_stok_keluar.index)
+app.post('/stok-keluar/insert', cek_login, c_stok_keluar.validasi_stok_keluar, c_stok_keluar.insert)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)
