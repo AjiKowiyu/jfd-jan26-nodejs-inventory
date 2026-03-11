@@ -25,7 +25,7 @@
 </div>
 
 <% if (stok_barang.length > 0) { %>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-6">
             <div class="row">
                 <div class="col-3">Kode Produk</div>
@@ -71,8 +71,22 @@
 
 <script src="/datatables-2.3.7/js/dataTables.js"></script>
 <script src="/datatables-2.3.7/js/dataTables.bootstrap5.js"></script>
+<script src="/datatables-2.3.7/js/dataTables.buttons.js"></script>
+<script src="/datatables-2.3.7/js/buttons.dataTables.js"></script>
+<script src="/datatables-2.3.7/js/jszip.min.js"></script>
+<script src="/datatables-2.3.7/js/pdfmake.min.js"></script>
+<script src="/datatables-2.3.7/js/vfs_fonts.js"></script>
+<script src="/datatables-2.3.7/js/buttons.html5.min.js"></script>
+<script src="/datatables-2.3.7/js/buttons.print.min.js"></script>
 <script>
-    new DataTable('#table_kartu_stok');
+    new DataTable('#table_kartu_stok', {
+        // dom: 'lBfrtip',
+        layout: {
+            topStart: {
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            }
+        }
+    })
 </script>
         
 <%- include('../layout/footer') %>
