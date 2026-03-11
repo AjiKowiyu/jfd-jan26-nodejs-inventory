@@ -52,6 +52,14 @@ module.exports =
         } else {
             res.redirect('/login?msg=sesi anda sudah habis, silakan login!')
         }
+    },
+
+
+
+    logout: function(req,res) {
+        req.session.destroy(function(){
+            res.redirect('/login?msg=anda sudah keluar dari aplikasi!')
+        })
     }
 
 }
