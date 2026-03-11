@@ -103,4 +103,27 @@ module.exports =
         })
     },
 
+
+
+    get_stok_terakhir_semua_produk: function() {
+        let sql = mysql.format(
+            `SELECT kode, stok_sisa, created_at 
+            FROM (
+                SELECT DISTINCT kode, stok_sisa, created_at 
+                FROM stok_produk ORDER BY created_at DESC
+            ) AS dummyTable
+            GROUP BY kode;`
+        )
+
+        return new Promise( function(resolve,reject) {
+            db.query(sql, function(errorSql, hasil) {
+                if (errorSql) {
+                    reject(errorSql)
+                } else {
+                    resolve(hasil)
+                }
+            })
+        })
+    },
+
 }
