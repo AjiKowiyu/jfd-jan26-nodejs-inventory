@@ -2,9 +2,9 @@ const moment    = require('moment')
 const mysql     = require('mysql2')
 const db        = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'kelas_jfd'
+    user: 'dosencod_deploy',
+    password: 'Rahasia2026',
+    database: 'dosencod_kelas_jfd'
 })
 db.connect()
 
