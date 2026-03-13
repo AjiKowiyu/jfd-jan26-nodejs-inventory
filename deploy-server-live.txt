@@ -1,0 +1,9 @@
+# punya domain/cloud hosting
+# buat subdomain baru
+# git clone
+# setup node js application (menu cpanel)
+# npm install
+# buat database baru
+# buat user database baru
+# import database
+# git pull untuk narik update dari lokal
